@@ -1,8 +1,20 @@
 import random
 
-def number_guessing_game():
-    print("🎲 Welcome to the Ultimate Guessing Game!")
-    print("I'm thinking of a number between 1 and 20.")
+def number_game():
+    name = input("Hi,  What is your Name: ")
+
+    print(f"🎲 Welcome to the Ultimate CODED Guessing Game, {name}!")
+    ready = input(
+        f"Are you ready to test your luck and wit, {name}? \n"
+        f"Let's see if you can outsmart the computer! 🤖\n"
+        f"Respond with yes or no: "
+    ).strip().lower()
+
+    if ready not in ['yes', 'y']:
+        print(f"😞 Oh come on {name}, don't be a party pooper! Maybe next time. Goodbye! 👋")
+        return 
+    
+    print("\nI'm thinking of a number between 1 and 20.")
     print("You only have 5 guesses. Don't mess it up. 😏\n")
 
     secret_number = random.randint(1, 20)
@@ -28,11 +40,12 @@ def number_guessing_game():
         # Correct guess
         if guess == secret_number:
             remaining_after = max_guesses - attempt
-            print("\n🎉 Congratulations!")
+            print(f"\n🎉 Congratulations, {name}! I never had a doubt. 😉")
             print(f"You actually guessed it right: {secret_number} ✅")
 
             print(f"You still had {remaining_after} guess(es) left. Not bad at all!")
-            print("You may now walk around like a champion. 🏆\n")
+            print("You may now walk around like a champion. 🏆")
+            print(f"Your new name should be *Winner {name}* 😜 Because you're The Undefeated! 🏆\n")
             break
 
         # Wrong guess: give sarcastic message + hint
@@ -42,24 +55,25 @@ def number_guessing_game():
             hint = "The correct number is LOWER than your guess."
 
         sarcastic_messages = [
-            "Wrong. But hey, at least you're consistent. 😅",
-            "Nope. Math might not be your superpower, huh?",
-            "Incorrect. Maybe close your eyes and try again?",
-            "Ouch. That one hurt my circuits.",
-            "Still wrong. But I admire your confidence. 😂"
+            f"Wrong. But {name}, at least you're consistent. 😅",
+            f"Nope. Guessing might not be your superpower, {name}, huh?",
+            f"Incorrect, {name}. Maybe close your eyes and try again?",
+            f"Ouch. That one hurt my circuits, {name}.",
+            f"Still wrong, {name}. But I admire your confidence. 😂",
+            f"Olodo lẹ́leyii sha! And your name {name} sounds like you know it all 😜"
         ]
         # Pick a sarcastic message based on attempt (just to vary a bit)
         message = sarcastic_messages[(attempt - 1) % len(sarcastic_messages)]
 
-        print(f"{message}")
+        print(message)
         print(f"💡 Hint: {hint}\n")
 
         # If this was the last guess, they lose
         if attempt == max_guesses:
-            print("💀 Game Over!")
+            print(f"💀 Game Over, {name}!")
             print(f"The correct number was: {secret_number}")
             print("You used all 5 guesses and still missed it...")
-            print("LOSER. (At this *game* only, relax 😜)\n")
+            print(f"Your new name should be *Loser {name}* 😜 Better luck next time!\n")
 
 if __name__ == "__main__":
-    number_guessing_game()
+    number_game()
