@@ -11,6 +11,7 @@ def number_game():
     ).strip().lower()
 
     if ready not in ['yes', 'y']:
+        print(f"😞 I Knew It's You {name}, Don't you Like fun? ")
         print(f"😞 Oh come on {name}, don't be a party pooper! Maybe next time. Goodbye! 👋")
         return 
     
